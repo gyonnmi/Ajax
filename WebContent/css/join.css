@@ -1,0 +1,11 @@
+/*join.css*/
+
+@import url("reset.css");
+@import url("header.css");
+
+
+
+.c1 {
+	background-color: pink;
+	border: 1px solid gray;
+}

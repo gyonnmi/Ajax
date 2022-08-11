@@ -1,0 +1,20 @@
+/*header.css*/
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	background-color: lavender;
+}
+
+.top-nav {
+	padding: 20px 50px;
+}
+
+.gnb ul {
+	display: flex;
+	justify-content: space-between;
+}
+
+.gnb ul li {
+	padding: 20px 50px;
+}
