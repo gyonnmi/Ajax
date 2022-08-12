@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.ajax.commend.AjaxIdCheckedCommend;
 import org.ajax.commend.AjaxJoinOkCommend;
 import org.ajax.commend.AjaxLoginOkCommend;
+import org.ajax.commend.AjaxLogoutCommend;
 import org.ajax.commend.ExcuteCommend;
 
 @WebServlet("*.ax")
@@ -27,6 +28,10 @@ public class AjaxController extends HttpServlet {
 		
 		ExcuteCommend commend=null;
 		
+		System.out.println(path);
+		System.out.println(uri);
+		System.out.println(basicURL);
+		
 		String url="";
 		if(basicURL.equals("/index.ax")) {
 			url="/index.jsp";
@@ -34,6 +39,8 @@ public class AjaxController extends HttpServlet {
 			url="/joinView.jsp";
 		} else if(basicURL.equals("/loginView.ax")) {
 			url="/loginView.jsp";
+		} else if(basicURL.equals("/deleteView.ax")) {
+			url="/deleteView.jsp";
 		} else if(basicURL.equals("/ajaxIdChecked.ax")) {
 			commend=new AjaxIdCheckedCommend();
 			commend.excuteQueryCommend(request, response);
@@ -44,6 +51,10 @@ public class AjaxController extends HttpServlet {
 			return;
 		} else if(basicURL.equals("/loginOk.ax")) {
 			commend=new AjaxLoginOkCommend();
+			commend.excuteQueryCommend(request, response);
+			return;
+		} else if(basicURL.equals("/logout.ax")) {
+			commend=new AjaxLogoutCommend();
 			commend.excuteQueryCommend(request, response);
 			return;
 		}

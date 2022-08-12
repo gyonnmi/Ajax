@@ -125,7 +125,46 @@ public class AjaxDao {
 	}
 	
 	
-	
+	//È¸¿øÅ»Åð
+	public int deleteDo(String userId, String userPw) {
+		int result=0;
+		
+		Connection conn=null;
+		PreparedStatement pstm=null;
+		ResultSet rs=null;
+		String query="";
+		
+		try {
+			conn=DBConnect.getConnection();
+			query="delete userPw member_0810 where userId=?";
+			pstm=conn.prepareStatement(query);
+			pstm.setString(1, userId);
+			rs=pstm.executeQuery();
+			
+			if(rs.next()) {
+				String dbUserPw=rs.getString("userPw");
+				if(dbUserPw.equals(userPw)) {
+					String delSql="delete from member_0810 where userId=?";
+					pstm=conn.prepareStatement(delSql);
+					pstm.setString(1, userId);
+					pstm.executeUpdate();
+					result=1;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(conn!=null) conn.close();
+				if(pstm!=null) pstm.close();
+				if(rs!=null) rs.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {}
+		}
+		
+		return result;
+	}
 	
 	
 	

@@ -2,3 +2,21 @@
 
 @import url("reset.css");
 @import url("header.css");
+
+.login {
+	width: 100%;
+}
+
+#loginForm {
+	display: flex;
+	justify-content: center;
+}
+
+table {
+	text-align: center;
+}
+
+table tbody label {
+	line-height: 30px;
+}
+

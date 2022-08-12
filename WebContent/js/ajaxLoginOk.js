@@ -29,7 +29,8 @@ loginOkBtn.addEventListener('click', ()=>{
 function loginOk() {
 	let data="userId="+userId.value+"&";
 		data+="userPw="+userPw.value;
-	const url="index.ax";
+	const url="loginOk.ax";
+	console.log(data);
 	
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("content-type",
@@ -37,12 +38,9 @@ function loginOk() {
 	xhr.onreadystatechange=function() {
 		if(xhr.readyState == 4 && xhr.status == 200) {
 			const result=xhr.responseText; //서버에서 response data
-			
-			content.innerText=result;
-			
 			if(result == 1) {
 				alert("로그인 성공");
-				location.href="index.ax";
+				location.href="/ajaxProject_0811/index.ax";
 			} else {
 				alert("로그인 실패");
 				history.go(-1);

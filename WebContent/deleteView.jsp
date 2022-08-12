@@ -1,33 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%-- <%
-	if(session.getAttribute("sessionId") != null) {
-		out.print("<script>");
-		out.print("alert('로그아웃 후 접근 가능한 페이지입니다.')");
-		out.print("location.href='/ajaxProject_0811/index.ax'");
-		out.print("</script>");
-	}
-%>   --%>  
-    
+    pageEncoding="UTF-8"%>     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>deleteView</title>
 <link rel="stylesheet" href="css/login.css" />
-<script src="js/ajaxLoginOk.js" defer></script>
+<script src="js/ajaxDeleteOk.js" defer></script>
 </head>
 <body>
 	<%@include file="header.jsp" %>
-	<div class="login">
-	<%=
-		session.getAttribute("sessionId")
-	%>
-		<form action="loginOk.ax" method="post" id="loginForm">
+	<div class="delete">
+		<form action="deleteOk.ax" method="post" id="deleteForm">
 			<table>
 				<thead>
 					<tr>
-						<th colspan="2">LOGIN</th>
+						<th colspan="2">회원탈퇴</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -36,7 +24,7 @@
 							<label for="userId">아이디</label>
 						</td>
 						<td>
-							<input type="text" name="userId" id="userId" />
+							<input type="text" name="userId" id="userId"/>
 						</td>
 					</tr>
 					<tr>
@@ -51,8 +39,7 @@
 				<tfoot>
 					<tr>
 						<td>
-							<a href="joinView.ax">회원가입</a>
-							<input type="button" value="로그인" id="loginOkBtn" />
+							<input type="button" value="회원탈퇴" id="deleteOkBtn" />
 						</td>
 					</tr>					
 				</tfoot>

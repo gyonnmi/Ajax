@@ -1,6 +1,7 @@
 package org.ajax.commend;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +22,29 @@ public class AjaxLoginOkCommend implements ExcuteCommend{
 		
 		AjaxDao dao=AjaxDao.getInstance();
 		
-		HttpSession session=request.getSession();
 		
 		int rs=dao.loginDo(userId, userPw);
 		System.out.println(rs);
+		HttpSession session=request.getSession();
+		if(rs==1) {
+			if(userId.equals("admin")) {
+				session.setAttribute("sessionId", "ADMIN");
+				session.setAttribute("roll", "ADMIN_ROLL");
+				session.setMaxInactiveInterval(60*10);				
+			} else {
+				session.setAttribute("sessionId", userId);
+				session.setAttribute("roll", "USER_ROLL");
+				session.setMaxInactiveInterval(60*20);	
+			}
+		}
+		
+		PrintWriter out=response.getWriter();
+		
+		response.setContentType("text/html; charset=utf8"); 
+		
+		out.print(rs+"");
+		out.close();
+		
 	}
 
 }

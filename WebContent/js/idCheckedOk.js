@@ -74,7 +74,7 @@ joinOkBtn.addEventListener('click', ()=>{
 function joinOk() {
 	let data="userId="+userId.value+"&"+
 		  "userPw="+userPw.value+"&"+
-		  "userPhone="+userPhone.vlaue;
+		  "userPhone="+userPhone.value;
 		  
 	const url="joinOk.ax";
 	console.log(data);
@@ -90,10 +90,9 @@ function joinOk() {
 			
 			if(result == 1) {
 				alert("회원가입 성공");
-				location.href="/loginView.ax";
+				location.href="/ajaxProject_0811/loginView.ax";
 			} else {
 				alert("회원가입 실패");
-				history.go(-1);
 			}
 		}
 	}
